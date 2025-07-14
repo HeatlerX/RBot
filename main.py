@@ -31,6 +31,7 @@ tracked_messages = {}
 app = FastAPI()
 
 @app.get("/", response_class=PlainTextResponse)
+@app.head("/", response_class=PlainTextResponse)
 async def root():
     return "Bot is running"
 
