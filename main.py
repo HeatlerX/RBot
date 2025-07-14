@@ -10,9 +10,14 @@ from fastapi.responses import PlainTextResponse
 import uvicorn
 import threading
 
-TOKEN = os.environ["DISCORD_TOKEN"]
-CHANNEL_ID = int(os.environ["CHANNEL_ID"])
-ROLE_ID = int(os.environ["ROLE_ID"])
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+if not TOKEN:
+    print("Error: DISCORD_TOKEN environment variable is not set!")
+    exit(1)
+
+CHANNEL_ID = 1386716428442407033
+ROLE_ID = 1247134346180296725
 
 intents = discord.Intents.default()
 intents.message_content = True
